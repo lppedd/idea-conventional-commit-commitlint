@@ -2,12 +2,14 @@
 
 # Commitlint Conventional Commit
 
-Looking for the latest **plugin binaries**? Get them [here][1] as `.zip`  
+### Available @ [JetBrains Plugins Repository][1]
+
+Looking for the latest **plugin binaries**? Get them [here][2] as `.zip`  
 <small>Supported IDE versions: `192.*` to `201.*` (both inclusive)</small> 
 
 -----
 
-This plugin extends the functionality of [Conventional Commit][2] to provide commit
+This plugin extends the functionality of [Conventional Commit][3] to provide commit
 types and scopes via Commitlint rules. The only requisite is to have a `.commitlintrc.json` file 
 in the project's root directory.
 
@@ -22,5 +24,6 @@ The considered rules are **type-enum** and **scope-enum**.
 
  - Edoardo Luppi (<lp.edoardo@gmail.com>)
 
-[1]: https://github.com/lppedd/idea-conventional-commit-commitlint/releases
-[2]: https://github.com/lppedd/idea-conventional-commit
+[1]: https://plugins.jetbrains.com/plugin/14046-commitlint-conventional-commit
+[2]: https://github.com/lppedd/idea-conventional-commit-commitlint/releases
+[3]: https://github.com/lppedd/idea-conventional-commit
