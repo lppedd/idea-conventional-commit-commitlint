@@ -1,0 +1,17 @@
+<idea-plugin>
+  <id>com.github.lppedd.idea-conventional-commit-commitlint</id>
+  <name>Commitlint Conventional Commit</name>
+  <vendor
+      email="lp.edoardo@gmail.com"
+      url="https://github.com/lppedd/idea-conventional-commit-commitlint">
+    Edoardo Luppi
+  </vendor>
+
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.github.lppedd.idea-conventional-commit</depends>
+
+  <extensions defaultExtensionNs="com.github.lppedd.idea-conventional-commit">
+    <commitTypeProvider implementation="com.github.lppedd.cc.commitlint.CommitlintTokensProvider" />
+    <commitScopeProvider implementation="com.github.lppedd.cc.commitlint.CommitlintTokensProvider" />
+  </extensions>
+</idea-plugin>
