@@ -11,6 +11,8 @@ This plugin extends the functionality of [Conventional Commit][2] to provide com
 types and scopes via Commitlint rules. The only requisite is to have a `.commitlintrc.json` file 
 in the project's root directory.
 
+The considered rules are **type-enum** and **scope-enum**.
+
 <br />
 <img src="https://raw.githubusercontent.com/lppedd/idea-conventional-commit-commitlint/master/images/example.png" alt="Completion example">
 
