@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
   id("org.jetbrains.intellij") version "0.4.26"
-  kotlin("jvm") version "1.4-M1"
+  kotlin("jvm") version "1.4.20-M1"
 }
 
 group = "com.github.lppedd"
@@ -20,9 +20,14 @@ intellij {
   setPlugins("com.github.lppedd.idea-conventional-commit:0.8.0")
 }
 
+dependencies {
+  compileOnly(kotlin("stdlib-jdk8", "1.4.20-M1"))
+}
+
 tasks {
   val kotlinOptions: KotlinCompile.() -> Unit = {
     kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.apiVersion = "1.3"
     kotlinOptions.freeCompilerArgs += listOf(
       "-Xno-param-assertions",
       "-Xjvm-default=enable"
