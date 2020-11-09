@@ -17,7 +17,7 @@ intellij {
   version = "IU-2019.2"
   downloadSources = true
   pluginName = "idea-conventional-commit-commitlint"
-  setPlugins("com.github.lppedd.idea-conventional-commit:0.8.0")
+  setPlugins("com.github.lppedd.idea-conventional-commit:0.15.3")
 }
 
 dependencies {
