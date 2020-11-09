@@ -40,7 +40,7 @@ tasks {
   patchPluginXml {
     version(project.version)
     sinceBuild("192")
-    untilBuild("203.*")
+    untilBuild(null)
     pluginDescription(File("plugin-description.html").readText(Charsets.UTF_8))
     changeNotes(File("change-notes/${version.replace('.', '_')}.html").readText(Charsets.UTF_8))
   }
