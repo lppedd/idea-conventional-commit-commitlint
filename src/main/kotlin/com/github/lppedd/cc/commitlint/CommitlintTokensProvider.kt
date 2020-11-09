@@ -71,10 +71,10 @@ private class CommitlintTokensProvider(private val project: Project) :
 
 private val TOKEN_RENDERING = CommitTokenRendering(icon = ICON_COMMITLINT)
 
-private class CommitlintCommitType(text: String) : CommitType(text) {
+private class CommitlintCommitType(text: String) : CommitType(text, "") {
   override fun getRendering() = TOKEN_RENDERING
 }
 
-private class CommitlintCommitScope(text: String) : CommitScope(text) {
+private class CommitlintCommitScope(text: String) : CommitScope(text, "") {
   override fun getRendering() = TOKEN_RENDERING
 }
