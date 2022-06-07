@@ -1,7 +1,6 @@
 package com.github.lppedd.cc.commitlint
 
 import com.github.lppedd.cc.api.*
-import com.github.lppedd.cc.api.CommitTokenElement.CommitTokenRendering
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.guessProjectDir
 import org.json.JSONArray
@@ -10,27 +9,33 @@ import org.json.JSONTokener
 import java.nio.charset.StandardCharsets.UTF_8
 import java.nio.file.Files
 import java.nio.file.Paths
+import javax.swing.Icon
 
 /**
  * @author Edoardo Luppi
  */
-private class CommitlintTokensProvider(private val project: Project) :
+@Suppress("UnstableApiUsage")
+internal class CommitlintTokensProvider(private val project: Project) :
     CommitTypeProvider,
     CommitScopeProvider {
+  companion object {
+    const val ID: String = "37415b03-9388-4c55-b949-8c4526f6934d"
+  }
+
   override fun getId(): String =
-    PROVIDER_ID
+    ID
 
   override fun getPresentation(): ProviderPresentation =
-    PROVIDER_PRESENTATION
+    CommitlintProviderPresentation
 
-  override fun getCommitTypes(prefix: String?): Collection<CommitType> =
+  override fun getCommitTypes(prefix: String): Collection<CommitType> =
     readRuleValuesFromConfigFile("type-enum")
-      .map(::CommitlintCommitType)
+      .map(::CommitlintCommitToken)
       .toList()
 
-  override fun getCommitScopes(commitType: String?): Collection<CommitScope> =
+  override fun getCommitScopes(commitType: String): Collection<CommitScope> =
     readRuleValuesFromConfigFile("scope-enum")
-      .map(::CommitlintCommitScope)
+      .map(::CommitlintCommitToken)
       .toList()
 
   private fun readRuleValuesFromConfigFile(ruleName: String): Sequence<String> {
@@ -58,7 +63,7 @@ private class CommitlintTokensProvider(private val project: Project) :
 
   private fun getConfigFilePath(): String? =
     project.guessProjectDir()
-      ?.findChild(CONFIG_FILE_NAME)
+      ?.findChild(CommitlintConstants.ConfigFileName)
       ?.path
 
   private inline fun <T> noException(block: () -> T): T? =
@@ -67,14 +72,31 @@ private class CommitlintTokensProvider(private val project: Project) :
     } catch (ignored: Exception) {
       null
     }
-}
 
-private val TOKEN_RENDERING = CommitTokenRendering(icon = ICON_COMMITLINT)
+  private object CommitlintProviderPresentation : ProviderPresentation {
+    override fun getName(): String =
+      "Commitlint"
 
-private class CommitlintCommitType(text: String) : CommitType(text, "") {
-  override fun getRendering() = TOKEN_RENDERING
-}
+    override fun getIcon(): Icon =
+      CommitlintIcons.Logo
+  }
 
-private class CommitlintCommitScope(text: String) : CommitScope(text, "") {
-  override fun getRendering() = TOKEN_RENDERING
+  private object CommitlintTokenPresentation : TokenPresentation {
+    override fun getIcon(): Icon =
+      CommitlintIcons.Logo
+  }
+
+  private class CommitlintCommitToken(private val text: String) : CommitType, CommitScope {
+    override fun getText(): String =
+      text
+
+    override fun getValue(): String =
+      getText()
+
+    override fun getDescription(): String =
+      ""
+
+    override fun getPresentation(): TokenPresentation =
+      CommitlintTokenPresentation
+  }
 }

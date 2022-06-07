@@ -1,7 +1,11 @@
-@file:JvmName("CommitlintIcons")
-
 package com.github.lppedd.cc.commitlint
 
 import com.intellij.openapi.util.IconLoader
+import javax.swing.Icon
 
-internal val ICON_COMMITLINT = IconLoader.getIcon("/icons/commitlint.svg")
+/**
+ * @author Edoardo Luppi
+ */
+object CommitlintIcons {
+  @JvmField val Logo: Icon = IconLoader.getIcon("/icons/commitlint.svg")
+}
