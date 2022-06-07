@@ -20,7 +20,7 @@ intellij {
   version.set(properties("platformVersion"))
   downloadSources.set(true)
   pluginName.set("idea-conventional-commit-commitlint")
-  plugins.set(listOf("com.github.lppedd.idea-conventional-commit:0.15.3"))
+  plugins.set(listOf("com.github.lppedd.idea-conventional-commit:0.21.0"))
 }
 
 dependencies {
