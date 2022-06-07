@@ -24,6 +24,7 @@ intellij {
 }
 
 dependencies {
+  implementation("org.json", "json", "20220320")
   compileOnly(kotlin("stdlib-jdk8", "1.7.0-RC2"))
 }
 
