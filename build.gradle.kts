@@ -2,21 +2,22 @@
 
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+fun properties(key: String) = project.findProperty(key).toString()
+
 plugins {
   id("org.jetbrains.intellij") version "1.6.0"
   kotlin("jvm") version "1.7.0-RC2"
 }
 
 group = "com.github.lppedd"
-version = "0.1.2"
 
 repositories {
   mavenCentral()
 }
 
 intellij {
-  type.set("IU")
-  version.set("2019.2")
+  type.set(properties("platformType"))
+  version.set(properties("platformVersion"))
   downloadSources.set(true)
   pluginName.set("idea-conventional-commit-commitlint")
   plugins.set(listOf("com.github.lppedd.idea-conventional-commit:0.15.3"))
@@ -41,7 +42,7 @@ tasks {
 
   patchPluginXml {
     version.set(project.version.toString())
-    sinceBuild.set("192")
+    sinceBuild.set(properties("pluginSinceBuild"))
     untilBuild.set(null as String?)
 
     val projectPath = projectDir.path
