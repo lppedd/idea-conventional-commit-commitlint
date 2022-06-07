@@ -29,8 +29,8 @@ dependencies {
 
 tasks {
   val kotlinOptions: KotlinCompile.() -> Unit = {
-    kotlinOptions.jvmTarget = "1.8"
-    kotlinOptions.apiVersion = "1.3"
+    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.apiVersion = "1.5"
     kotlinOptions.freeCompilerArgs += listOf(
       "-Xno-param-assertions",
       "-Xjvm-default=enable"
