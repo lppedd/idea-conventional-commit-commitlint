@@ -43,7 +43,7 @@ tasks {
   patchPluginXml {
     version.set(project.version.toString())
     sinceBuild.set(properties("pluginSinceBuild"))
-    untilBuild.set(null as String?)
+    untilBuild.set(properties("pluginUntilBuild"))
 
     val projectPath = projectDir.path
     pluginDescription.set((File("$projectPath/plugin-description.html").readText(Charsets.UTF_8)))
